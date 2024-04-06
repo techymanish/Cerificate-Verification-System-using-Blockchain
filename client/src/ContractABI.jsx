@@ -4,7 +4,7 @@ export const ContractABI = [
 		"inputs": [
 			{
 				"indexed": false,
-				"internalType": "uint256",
+				"internalType": "uint256",	
 				"name": "certificateId",
 				"type": "uint256"
 			}

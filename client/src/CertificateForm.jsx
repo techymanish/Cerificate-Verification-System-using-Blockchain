@@ -25,6 +25,9 @@ function CertificateForm() {
         }));
     };
 
+
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formData);
@@ -37,7 +40,7 @@ function CertificateForm() {
                 const web3 = new Web3(window.ethereum);
                 const accounts = await web3.eth.getAccounts();
 
-                const contractAddress = '0xdB4F0777168FEF7Da8e54E515E21ED247947b225'; 
+                const contractAddress = '0xb7782dFfE4a451a210E045DCDb939B1235A4A855'; 
                 const contract = new web3.eth.Contract(ContractABI, contractAddress);                
 
                 const options = {
@@ -57,7 +60,8 @@ function CertificateForm() {
                     .then(response => response.json())
                         .then(async response => await contract.methods
                             .addCertificate(formData.certificateId, response.IpfsHash)
-                            .send({ from: accounts[0] })).then(response => console.log(response))               
+                            .send({ from: accounts[0] })).then(response => console.log(response))      
+
                 
             } else {
                 throw new Error('MetaMask extension not detected');

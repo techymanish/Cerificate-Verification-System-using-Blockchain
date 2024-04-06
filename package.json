@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@helia/unixfs": "^3.0.2",
+    "helia": "^4.1.0"
+  }
+}
