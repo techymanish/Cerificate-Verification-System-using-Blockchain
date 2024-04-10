@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+}
+
+
+.textBox {
+    color: white;
+    text-align: center;
+    font-size: 4vh;
+    width: 50%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+.line {
+    border: 1px solid white;
+}
+
+.buttonHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.primary {
+    font-size: 1.8vh;
+    width: 24vh;
+    height: 5vh;
+    margin: 2vh;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: white;
+    border: 2px solid black;
+    background-color: transparent;
+    background-color: rgb(0, 0, 0, 0.7);
+}
+
+.primary:hover {
+    width: 24vh;
+    height: 5vh;
+    margin: 2vh;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: white;
+    border: 2px solid black;
+    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.6);
+}

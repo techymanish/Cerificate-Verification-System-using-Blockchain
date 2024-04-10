@@ -11,11 +11,17 @@
   },
   "dependencies": {
     "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
     "buffer": "^6.0.3",
     "dotenv": "^16.4.5",
     "formdata": "^0.10.4",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.4",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
+    "sort-by": "^1.2.0",
     "web3": "^4.6.0"
   },
   "devDependencies": {
