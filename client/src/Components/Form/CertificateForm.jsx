@@ -41,28 +41,46 @@ function CertificateForm() {
                 const web3 = new Web3(window.ethereum);
                 const accounts = await web3.eth.getAccounts();
 
-                const contractAddress = '0xb7782dFfE4a451a210E045DCDb939B1235A4A855';
+                const contractAddress = '0x36eA6A550DfD3aCcbb13DDaD6a3Ff1602d5275CA';
                 const contract = new web3.eth.Contract(ContractABI, contractAddress);
 
-                const options = {
-                    method: 'POST',
-                    headers: {
-                        Authorization: `Bearer ${import.meta.env.VITE_PINATA_JWT}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        pinataContent: formData,
-                        pinataMetadata: { name: 'maneesh.json' },
-                        pinataOptions: { cidVersion: 1 }
-                    })
-                };
+                // Check if the certificate ID already exists on the blockchain
+                const certificateIdExists = await contract.methods.certificateExists(formData.certificateId).call();
 
-                await fetch('https://api.pinata.cloud/pinning/pinJSONToIPFS', options)
-                    .then(response => response.json())
-                    .then(async response => await contract.methods
-                        .addCertificate(formData.certificateId, response.IpfsHash)
-                        .send({ from: accounts[0] })).then(response => console.log(response))
+                if (certificateIdExists) {
+                    console.log('Certificate ID already exists on the blockchain. Aborting operation.');
+                } else {
+                    const formDataJson = JSON.stringify(formData);
 
+                    const options = {
+                        method: 'POST',
+                        headers: {
+                            Authorization: `Bearer ${import.meta.env.VITE_PINATA_JWT}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            pinataContent: formDataJson,
+                            pinataMetadata: { name: `${formData.personName}_${formData.certificateId}.json` },
+                            pinataOptions: { cidVersion: 1 }
+                        })
+                    };
+
+                    try {
+                        const response = await fetch('https://api.pinata.cloud/pinning/pinJSONToIPFS', options);
+                        const responseData = await response.json();
+                        const ipfsHash = responseData.IpfsHash;
+
+                        await contract.methods
+                            .addCertificate(formData.certificateId, ipfsHash)
+                            .send({ from: accounts[0] });
+
+                        console.log('Certificate data stored on IPFS with hash:', ipfsHash);
+                        console.log('IPFS hash stored on blockchain for certificate ID:', formData.certificateId);
+                    } 
+                    catch (error) {
+                        console.error('Error:', error);
+                    }
+                }
 
             } else {
                 throw new Error('MetaMask extension not detected');

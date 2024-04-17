@@ -1,5 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
+import { ContractABI } from './ContractABI';
+import Web3 from 'web3';
+
 import "../Form/inst.css"
 
 function Verify() {
@@ -15,14 +18,28 @@ function Verify() {
         setFormData({ ...formData, [name]: value });
       };
     
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
-        // You can perform form submission logic here, like sending data to a server
 
+        await window.ethereum.enable();
+        const web3 = new Web3(window.ethereum);
+        const accounts = await web3.eth.getAccounts();
 
+        const contractAddress = '0x36eA6A550DfD3aCcbb13DDaD6a3Ff1602d5275CA';
+        const contract = new web3.eth.Contract(ContractABI, contractAddress);
 
+        const certificateHash = await contract.methods.getCertificateHashById(formData.certificateId).call();
 
-        console.log(formData);
+        const url = `https://gateway.pinata.cloud/ipfs/${certificateHash}`; // Construct URL with the hash
+        
+        const options = {
+          method: 'GET',
+        };
+        
+        const response = await fetch(url, options);
+        const responseData = await response.json();
+        console.log(responseData);        
+        
       };
     
       return (
@@ -35,9 +52,8 @@ function Verify() {
               <input type="text" name="name" value={formData.name} onChange={handleChange} />
             </div>
             <div>
-              
-              <label>IPFS Hash</label>
-              <input type="text" name="certificate" value={formData.certificateId} onChange={handleChange} />
+              <label>Certificate ID</label>
+              <input type="text" name="certificateId" value={formData.certificateId} onChange={handleChange} />
             </div>
             <div>
             <button className='primary' type="submit">Submit</button>

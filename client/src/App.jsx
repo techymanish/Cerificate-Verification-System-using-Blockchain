@@ -10,7 +10,7 @@ function App() {
       <video src={videoBg} autoPlay loop muted/>
       </div>
       <div className="content">
-      <CertificateForm/>
+      <Verify/>
       </div>
       
     </div>
