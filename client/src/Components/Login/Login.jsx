@@ -1,6 +1,6 @@
 import React from "react";
 import videoBg from "../video.mp4"
-import Student from "./Student"
+import LoginPage from "./LoginPage"
 function Login() {
   return (
     <div className="main">
@@ -8,7 +8,7 @@ function Login() {
         <video src={videoBg} autoPlay loop muted />
       </div>
       <div className="content">
-        <Student/>
+        <LoginPage/>
       </div>
     </div>
   );

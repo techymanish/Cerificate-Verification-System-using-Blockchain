@@ -27,9 +27,9 @@
     width: 50%;
 }
 
-.primary {
+.primary-two {
     font-size: 1.8vh;
-    width: 24vh;
+    width: 12vh;
     height: 5vh;
     margin: 2vh;
     font-family: "Roboto", sans-serif;
@@ -40,8 +40,8 @@
     background-color: rgb(0, 0, 0, 0.7);
 }
 
-.primary:hover {
-    width: 24vh;
+.primary-two:hover {
+    width: 12vh;
     height: 5vh;
     margin: 2vh;
     font-family: "Roboto", sans-serif;
