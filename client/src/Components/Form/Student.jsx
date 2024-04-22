@@ -47,7 +47,7 @@ function Verify() {
       console.log(responseData);
       return <Certificate data={responseData} />;
     } else {
-      console.log("Sale scammer");
+      console.log("Wrong username");
     }
   };
 

@@ -3,16 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 import InputControl from "../InputControl/InputControl";
-import { auth,db } from "../Login/firebase";
-import {collection, addDoc, setDoc, doc} from "firebase/firestore"
+import { auth, db } from "../Login/firebase";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 
 import styles from "./Signup.module.css";
 
 function Signup() {
   const getRole = () => {
-    const role_value = () => document.querySelector('input[name="flexRadioDefault"]:checked').value;
-    return role_value() === "option1" ? "student" : "institution";
-  }
+    const role_value = () =>
+      document.querySelector('input[name="flexRadioDefault"]:checked').value;
+    return role_value() == "option1" ? "student" : "institution";
+  };
 
   const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ function Signup() {
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
   const handleSubmission = () => {
- 
+    console.log(getRole());
     if (!values.name || !values.email || !values.instituion || !values.pass) {
       setErrorMsg("Fill all fields");
       return;
@@ -100,7 +101,6 @@ function Signup() {
               type="radio"
               name="flexRadioDefault"
               id="flexRadioDefault2"
-              defaultChecked=""
             />
             <label className="form-check-label" htmlFor="flexRadioDefault2">
               Instituition
