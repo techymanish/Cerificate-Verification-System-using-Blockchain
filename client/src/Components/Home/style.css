@@ -1,15 +1,53 @@
 .container {
     display: flex;
+    margin-top: 25%;
+    
+}
+.contentContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.headingText{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 3vh;
+    text-align: center;
+    font-weight: 100;
 }
 
+#head{
+    color: black;
+    font-size: 3.5vh;
+    background-color: rgb(245, 222, 179);
+    margin-bottom: 0.5vh;
+    padding-left: 0.5vh;
+}
 
+.heading{
+    margin-top: 3vh;
+    color:black;
+    background-color: wheat;
+    align-items: center;
+    width: 100%;
+    border-radius: 3px;
+    padding: 0.5vh;
+}   
 .textBox {
+    background-color: rgba(0, 0, 0, 0.678);
     color: white;
     text-align: center;
-    font-size: 4vh;
-    width: 50%;
+    font-size: 1.8vh;
+    text-align: justify;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 100%;
+    padding: 0.5vh;
+    
 }
-
+.box1{
+    margin-right: 3vh;
+}
 * {
     margin: 0;
     padding: 0;
@@ -22,26 +60,26 @@
 
 .buttonHolder {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 100%;
 }
 
 .primary-two {
-    font-size: 1.8vh;
-    width: 12vh;
+    font-size: 2vh;
+    width: 25vh;
     height: 5vh;
     margin: 2vh;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    color: white;
+    color: wheat;
     border: 2px solid black;
     background-color: transparent;
     background-color: rgb(0, 0, 0, 0.7);
 }
 
 .primary-two:hover {
-    width: 12vh;
+    width: 25vh;
     height: 5vh;
     margin: 2vh;
     font-family: "Roboto", sans-serif;

@@ -1,4 +1,5 @@
 .innerBox {
+  margin-top: 50%;
   min-width: 480px;
   height: fit-content;
   width: fit-content;
@@ -9,7 +10,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
 }
 
 .footer {
