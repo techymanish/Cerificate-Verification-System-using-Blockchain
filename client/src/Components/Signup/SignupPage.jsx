@@ -92,7 +92,7 @@ function Signup() {
               id="flexRadioDefault1"
             />
             <label className="form-check-label" htmlFor="flexRadioDefault1">
-              Student/Employer
+              Verifier
             </label>
           </div>
           <div className="form-check">
@@ -103,7 +103,7 @@ function Signup() {
               id="flexRadioDefault2"
             />
             <label className="form-check-label" htmlFor="flexRadioDefault2">
-              Instituition
+              Admin
             </label>
           </div>
         </>

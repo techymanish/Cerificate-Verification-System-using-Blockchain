@@ -5,12 +5,10 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import InputControl from "../InputControl/InputControl";
 import { auth, db } from "../Login/firebase";
 
-
 import styles from "./Login.module.css";
-import { collection, doc, getDoc  } from "firebase/firestore";
+import { collection, doc, getDoc } from "firebase/firestore";
 
 function Login() {
-
   const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
@@ -29,26 +27,25 @@ function Login() {
     setSubmitButtonDisabled(true);
     signInWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
-
         // Get the user's ID
         const userId = res.user.uid;
-        console.log(userId)
+        console.log(userId);
         // Fetch the user's document from the database
-        const userDocRef = doc(db, 'users', userId);
+        const userDocRef = doc(db, "users", userId);
         const userDocSnap = await getDoc(userDocRef);
         console.log(userDocSnap.data());
         if (userDocSnap.exists()) {
           // Retrieve the role from the user's document
           const userRole = userDocSnap.data().role;
           console.log(userRole);
-          if(userRole === "institution"){
+          if (userRole === "institution") {
             navigate("/instituition");
-          }else{
+          } else {
             navigate("/student");
           }
         } else {
           console.log("User document not found!");
-          navigate("/")
+          navigate("/");
         }
         setSubmitButtonDisabled(false);
       })
@@ -83,7 +80,7 @@ function Login() {
             Login
           </button>
           <p>
-            Already have an account?{" "}
+            Don't have an account?{" "}
             <span>
               <Link to="/signup">Sign up</Link>
             </span>
