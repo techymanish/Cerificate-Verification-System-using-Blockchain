@@ -3,6 +3,7 @@ import Verify from "../Form/Verify";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import CertificateForm from "../Form/CertificateForm";
+import Certificate from "../Form/Certificate";
 import Signup from "../Signup/Signup";
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
     {
         path:"/instituition",
         element:<CertificateForm/>
+    },
+    {
+      path:"verify",
+      element:<Certificate/>  
     },
     {
         path:"/login",

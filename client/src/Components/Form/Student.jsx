@@ -7,10 +7,15 @@ import "../Form/inst.css";
 import Certificate from "./Certificate";
 
 function Verify() {
+  const[Data,setData] = useState();
+  
+  
   const [formData, setFormData] = useState({
     name: "",
     certificateId: "",
   });
+
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,7 +24,6 @@ function Verify() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     await window.ethereum.enable();
     const web3 = new Web3(window.ethereum);
     const accounts = await web3.eth.getAccounts();
@@ -45,44 +49,48 @@ function Verify() {
 
     if (name.toLowerCase() === formData.name.toLowerCase()) {
       console.log(responseData);
-      return <Certificate data={responseData} />;
+      setData(responseData);
+      setSubmitted(true);
     } else {
-      console.log("Wrong username");
+      alert("Wrong username");
     }
   };
 
   return (
     <>
-      <div className="form-container">
-        {" "}
-        {/* Using a class name for styling */}
-        <h1 className="heading">Verify a Certificate</h1>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Certificate ID</label>
-            <input
-              type="text"
-              name="certificateId"
-              value={formData.certificateId}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <button className="primary" type="submit">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
+      {submitted ? (
+        <Certificate data = {Data}/>
+      ) : (
+        <div className="form-container">
+          <h1 className="heading">Verify a Certificate</h1>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label>Certificate ID</label>
+              <input
+                type="text"
+                name="certificateId"
+                value={formData.certificateId}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <button className="primary" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+      ;
     </>
   );
 }
