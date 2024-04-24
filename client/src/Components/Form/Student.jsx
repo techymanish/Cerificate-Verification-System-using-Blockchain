@@ -7,8 +7,8 @@ import "../Form/inst.css";
 import Certificate from "./Certificate";
 
 function Verify() {
-  const[Data,setData] = useState();
-  
+  const [Data, setData] = useState();
+
   const [formData, setFormData] = useState({
     name: "",
     certificateId: "",
@@ -45,6 +45,7 @@ function Verify() {
 
     const data = JSON.parse(responseData);
     let name = data["personName"];
+    colsole.log("umang gaandu");
 
     if (name.toLowerCase() === formData.name.toLowerCase()) {
       console.log(responseData);
@@ -58,7 +59,7 @@ function Verify() {
   return (
     <>
       {submitted ? (
-        <Certificate data = {Data}/>
+        <Certificate data={Data} />
       ) : (
         <div className="form-container">
           <h1 className="heading">Verify a Certificate</h1>
