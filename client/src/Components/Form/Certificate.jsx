@@ -1,5 +1,6 @@
+import React from "react";
 import "./inst.css";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 
 function Certificate(props) {
 
@@ -16,7 +17,7 @@ function Certificate(props) {
     govDocID: "",
     docID: ""
   });
-  const data=props;
+
   useEffect(() => {
     // Assuming props.data contains the JSON data received from the API
     if (props.data) {
