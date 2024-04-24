@@ -1,8 +1,9 @@
 import React from "react";
 import "./inst.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function Certificate(props) {
+
   const [certificateData, setCertificateData] = useState({
     certificateId: "",
     personName: "",
@@ -13,136 +14,68 @@ function Certificate(props) {
     totalMarks: "",
     awardedMarks: "",
     govDocName: "",
-    govDocID: ""
+    govDocID: "",
+    docID: ""
   });
 
   useEffect(() => {
-    if (data) {
-      // Map the data to state
-      setCertificateData({
-        certificateId: data.certificateId || "",
-        personName: data.personName || "",
-        issuingAuthority: data.issuingAuthority || "",
-        certificateTitle: data.certificateTitle || "",
-        beginDate: data.beginDate || "",
-        endDate: data.endDate || "",
-        totalMarks: data.totalMarks || "",
-        awardedMarks: data.awardedMarks || "",
-        govDocName: data.govDocName || "",
-        govDocID: data.govDocID || ""
-      });
+    // Assuming props.data contains the JSON data received from the API
+    if (props.data) {
+      setCertificateData(prevData => ({
+        ...prevData,
+        ...props.data
+      }));
     }
-  }, [data]);
-
+  }, [props.data]);
+  
   return (
     <>
       <div className="form-container">
-        <h1 className="heading">Verified Certificate</h1>
+        <h1 className="heading">Verified Certificate✅</h1>
         <form>
           <div>
             <label>Certificate ID</label>
-            <input
-              className="myInput"
-              readOnly
-              type="number"
-              name="certificateId"
-              value={certificateData.certificateId}
-            />
+            <div className="myInput">{certificateData.certificateId}</div>
           </div>
           <div>
             <label>Name</label>
-            <input
-              className="myInput"
-              readOnly
-              type="text"
-              name="personName"
-              value={certificateData.personName}
-            />
+            <div className="myInput">{certificateData.personName}</div>
           </div>
           <div>
             <label>Issuing Authority</label>
-            <input
-              className="myInput"
-              readOnly
-              type="text"
-              name="issuingAuthority"
-              value={certificateData.issuingAuthority}
-            />
+            <div className="myInput">{certificateData.issuingAuthority}</div>
           </div>
           <div>
             <label>Certificate Title</label>
-            <input
-              className="myInput"
-              readOnly
-              type="text"
-              name="certificateTitle"
-              value={certificateData.certificateTitle}
-            />
+            <div className="myInput">{certificateData.certificateTitle}</div>
           </div>
           <div>
             <label>Begin Date</label>
-            <input
-              className="myInput"
-              readOnly
-              type="date"
-              name="beginDate"
-              value={certificateData.beginDate}
-            />
+            <div className="myInput">{certificateData.beginDate}</div>
           </div>
           <div>
             <label>End Date</label>
-            <input
-              className="myInput"
-              type="date"
-              name="endDate"
-              value={certificateData.endDate}
-              readOnly
-            />
+            <div className="myInput">{certificateData.endDate}</div>
           </div>
           <div>
             <label>Total Marks</label>
-            <input
-              className="myInput"
-              readOnly
-              type="number"
-              name="totalMarks"
-              value={certificateData.totalMarks}
-            />
+            <div className="myInput">{certificateData.totalMarks}</div>
           </div>
           <div>
             <label>Awarded Marks</label>
-            <input
-              className="myInput"
-              readOnly
-              type="number"
-              name="awardedMarks"
-              value={certificateData.awardedMarks}
-            />
+            <div className="myInput">{certificateData.awardedMarks}</div>
+
           </div>
           <div>
             <label>Government ID</label>
-            <input
-              className="myInput"
-              readOnly
-              type="text"
-              name="govDocName"
-              value={certificateData.govDocName}
-            />
+            <div className="myInput">{certificateData.govDocName}</div>
+
           </div>
           <div>
             <label>Document ID</label>
-            <input
-              className="myInput"
-              type="text"
-              name="docID"
-              value={certificateData.docID}
-              readOnly
-            />
+            <div className="myInput">{certificateData.docID}</div>
           </div>
           <div>
-            <button className="primary" type="submit">
-              Submit
-            </button>
           </div>
         </form>
       </div>

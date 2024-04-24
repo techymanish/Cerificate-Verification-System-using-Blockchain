@@ -75,5 +75,10 @@
 }
 
 .myInput{
-  cursor:auto;
+  background-color: white;
+  width: 60%;
+  height: 70%;
+  border-radius: 3px;
+  font-family: 'Courier New', Courier, monospace;
+  align-items: center;
 }

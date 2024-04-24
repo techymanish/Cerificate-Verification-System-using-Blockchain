@@ -9,7 +9,6 @@ import Certificate from "./Certificate";
 function Verify() {
   const[Data,setData] = useState();
   
-  
   const [formData, setFormData] = useState({
     name: "",
     certificateId: "",
