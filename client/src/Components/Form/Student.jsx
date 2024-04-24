@@ -45,10 +45,10 @@ function Verify() {
 
     const data = JSON.parse(responseData);
     let name = data["personName"];
-    colsole.log("umang gaandu");
+    
 
     if (name.toLowerCase() === formData.name.toLowerCase()) {
-      console.log(responseData);
+      // console.log(responseData);
       setData(responseData);
       setSubmitted(true);
     } else {

@@ -1,9 +1,8 @@
 import React from "react";
 import "./inst.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Certificate(props) {
-
   const [certificateData, setCertificateData] = useState({
     certificateId: "",
     personName: "",
@@ -15,19 +14,20 @@ function Certificate(props) {
     awardedMarks: "",
     govDocName: "",
     govDocID: "",
-    docID: ""
+    docID: "",
   });
 
   useEffect(() => {
     // Assuming props.data contains the JSON data received from the API
     if (props.data) {
-      setCertificateData(prevData => ({
+      setCertificateData((prevData) => ({
         ...prevData,
-        ...props.data
+        ...props.data,
       }));
+      console.log(props.data);
     }
   }, [props.data]);
-  
+
   return (
     <>
       <div className="form-container">
@@ -64,19 +64,16 @@ function Certificate(props) {
           <div>
             <label>Awarded Marks</label>
             <div className="myInput">{certificateData.awardedMarks}</div>
-
           </div>
           <div>
             <label>Government ID</label>
             <div className="myInput">{certificateData.govDocName}</div>
-
           </div>
           <div>
             <label>Document ID</label>
             <div className="myInput">{certificateData.docID}</div>
           </div>
-          <div>
-          </div>
+          <div></div>
         </form>
       </div>
     </>
