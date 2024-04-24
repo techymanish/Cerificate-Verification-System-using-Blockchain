@@ -1,6 +1,5 @@
-import React from "react";
 import "./inst.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function Certificate(props) {
   const [certificateData, setCertificateData] = useState({
@@ -15,7 +14,7 @@ function Certificate(props) {
     govDocName: "",
     govDocID: ""
   });
-
+  const data=props;
   useEffect(() => {
     if (data) {
       // Map the data to state
